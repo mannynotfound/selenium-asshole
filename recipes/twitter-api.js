@@ -28,7 +28,9 @@ class TwitterApi {
     // if nothing happens for 2 minutes, exit process
     this.timeout = setTimeout(() => {
       console.log('HITTING TIMEOUT')
-      this.clearAccount()
+      this.checkForChallenge(() => {
+        this.clearAccount()
+      })
     }, 1000 * 60 * 2)
 
     console.log(this.current)
@@ -83,6 +85,24 @@ class TwitterApi {
       .setValue('.js-password-field', this.model[this.current].password)
       .submitForm('.js-signin')
       .then(this.createNewApp.bind(this))
+  }
+
+  checkForChallenge(cb) {
+    console.log('CHECKING 4 CHALLENGE')
+    this.client
+      .getUrl()
+      .then((url) => {
+        if (url.indexOf('challenge_type=RetypePhoneNumber') > -1) {
+          console.log('ATTEMPTING CHALLENGE')
+          this.client
+            .setValue('input#challenge_response', this.model[this.current].pva)
+            .submitForm('#login-challenge-form')
+            .then(this.createNewApp.bind(this))
+          this.clearTimeout(this.timeout)
+        } else {
+          cb(false)
+        }
+      })
   }
 
   createNewApp() {

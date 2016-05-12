@@ -1,0 +1,7 @@
+{
+  "default": {
+    "desiredCapabilities": {
+      "browserName": "firefox"
+    }
+  }
+}

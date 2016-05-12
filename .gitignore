@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+selenium-server-standalone*
+models/*
+output/*
+.env*
+!models/example.json
+!output/example.json

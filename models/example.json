@@ -1,0 +1,8 @@
+[
+  {
+    "site": "https://google.com",
+    "action": "scrape",
+    "ouput": "google.json"
+  }
+]
+

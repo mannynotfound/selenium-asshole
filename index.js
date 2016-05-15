@@ -8,8 +8,8 @@ var Recipe = null, model = null, options = null
 
 try {
   Recipe = require('./recipes/' + process.argv[2]).default
-  model = require('./models/' + process.argv[3])
-  options = require('./configs')[process.argv[4] || 'default']
+  model = require('./recipes/' + process.argv[2] + '/models/main')
+  options = require('./configs')[process.argv[3] || 'default']
 } catch(e) {
   console.log('SOMETHING WENT WRONG ', e)
 }

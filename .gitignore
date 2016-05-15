@@ -1,9 +1,8 @@
 node_modules
 .DS_Store
 selenium-server-standalone*
-recipes
 **models
-recipes/**/models/**
+**/models/**
 output/*
 .env*
 !models/example.json

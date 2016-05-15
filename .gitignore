@@ -3,7 +3,4 @@ node_modules
 selenium-server-standalone*
 **models
 **/models/**
-output/*
 .env*
-!models/example.json
-!output/example.json
